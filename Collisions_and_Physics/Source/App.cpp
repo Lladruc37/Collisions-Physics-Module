@@ -31,16 +31,16 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	input = new Input(win);
 	render = new Render(win);
 	tex = new Textures(render);
-	scene = new Scene(input);
 	collisions = new Collisions();
+	scene = new Scene(input, render, collisions);
 
 	// Ordered for Start & Update
 	// Reverse order of CleanUp
 	AddModule(win);
 	AddModule(input);
 	AddModule(tex);
-	AddModule(scene);
 	AddModule(collisions);
+	AddModule(scene);
 
 	// Render last to swap buffer
 	AddModule(render);
